@@ -35,10 +35,10 @@
 ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) url script-response-body https://raw.githubusercontent.com/Yu9191/Rewrite/main/Revenuecat.js
 #清理
 ^https?:\/\/api\.revenuecat\.com\/v1\/(subscribers\/[^\/]+$|receipts$) url script-request-header https://raw.githubusercontent.com/Yu9191/Rewrite/main/Revenuecat.js
-
+https://api.lianjiu.fun/app/api/v1/profile url reject
 
 [mitm] 
-hostname = api.revenuecat.com
+hostname = api.revenuecat.com, api.lianjiu.fun
 
 ************************************/
 
@@ -63,12 +63,21 @@ if (typeof $response == "undefined") {
   var UA = $request.headers['user-agent'];
   const app = '1';
   const UAMappings = {
+    'becoming':{ name: 'Strength Pro', id: 'strength_membership_monthly'},//练就
+    'Chords':{ name: 'FullUnlock', id: 'cas_full_unlock_yearly_50_off'},//8.1
+    'reader':{ name: 'subscriptions', id: 'com.valo.reader.vip1.forever'},
+    'Gradient':{ name: 'unlimited', id: 'com.tickettothemoon.gradient.unlimited.yearly.small'},//7.23
+    'Python3IDE':{ name: 'pro', id: 'python3ide_six_month'},//7.14
+    'Scale%20Finder':{ name: 'Pro', id: 'sf_2999_1y_1w0'},//7.14
+    'Who%20Stalks':{ name: 'Premium', id: 'ws_999_1m'},//7.14
+    'PrevisShot':{ name: 'VIP', id: 'com.previsshot.previsshot.continuous_subscribe_12month_vip'},//7.9
+    'Super%20AI%20Chat':{ name: 'premium', id: 'chatbot_v4_1999_1y'},
     'MusicPutty':{ name: 'pro_version', id: 'mp_3599_1y'},//6.24
     'Linearity':{ name: 'pro', id: 'linearity_curve_pro_yearly_launch_offer'},
     'iplayTV':{ name: 'com.ll.btplayer.12', id: 'com.ll.btplayer.12'},//6.21
     '%E8%B5%84%E6%BA%90%E6%90%AC%E8%BF%90%E5%A4%A7%E5%B8%88':{ name: 'SaveTikYoutu_common', id: 'LifetimeSubscription'},
     'DHWaterMarkManager':{ name: 'Vip', id: 'lifetimeVIP_001'},//6.20
-    
+    'Krishna%20VPN%20Plus%20Browser':{ name: 'vpnz-lifetime', id: 'vpnz-lifetime'},//7.7
     'XBListeningEnglish':{ name: 'enPro', id: 'com.shenming.newconceptvip.year'},
     'FretTrainer':{ name: 'pro', id: 'frettrainer.sub.yearly.pro'},//5.7
     '%E9%B2%B8%E8%90%BD%E6%96%87%E6%A1%88':{ name: 'vip', id: 'jl_year'},//2024.5.6
@@ -83,7 +92,7 @@ if (typeof $response == "undefined") {
     'clica':{ name: 'pro', id: 'clica.vip.year'},//
     'FoJiCam':{ name: 'Pro', id: 'com.uzero.cn.fojicam.life2'},//2024.4.9
     'ShellBoxKit':{ name: 'pro', id: 'ShellBoxKit.Lifetime'},//2024.4.9
-
+    'PicSeedClient':{ name: 'Pro', id: 'com.picseed.sub.pro.monthly'},//7.6
     'StarDiary':{ name: 'pro', id: 'com.gsdyx.StarDiary.nonConsumable.forever'},
     'CountDuck':{ name: 'premium', id: 'Lifetime'},
     'StarFocus':{ name: 'pro', id: 'com.gsdyx.StarFocus.nonConsumable.forever'},
